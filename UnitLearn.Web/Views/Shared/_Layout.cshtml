@@ -1,49 +1,486 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - UnitLearn.Web</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#3ed2a7">
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="~/" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Almarai&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/HomeTemplate/assets/vendors/liquid-icon/liquid-icon.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="~/HomeTemplate/assets/css/theme-vendors.min.css" />
+    <link rel="stylesheet" href="~/HomeTemplate/assets/css/theme.min.css" />
+    <link rel="stylesheet" href="~/HomeTemplate/assets/css/themes/seo.css" />
+    <link rel="stylesheet" href="~/HomeTemplate/assets/css/themes/scc6wwx.css" />
+
+    <style>
+        input,
+        textarea,
+        small,
+        button,
+        a,
+        body,
+        b,
+        span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        li,
+        div {
+            font-family: Almarai !important;
+        }
+    </style>
+    @RenderSection("css", false)
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">UnitLearn.Web</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
+
+<body dir="rtl" data-mobile-nav-trigger-alignment="right" data-mobile-nav-align="left" data-mobile-nav-style="modern"
+      data-mobile-nav-shceme="gray" data-mobile-header-scheme="gray" data-mobile-nav-breakpoint="1199">
+    <div id="wrap">
+        <header class="main-header main-header-overlay">
+            <div class="mainbar-wrap">
+                <div class="megamenu-hover-bg"></div>
+                <div class="container-fluid mainbar-container">
+                    <div class="mainbar">
+                        <div class="row mainbar-row align-items-lg-stretch px-4">
+                            <div class="col-auto">
+                                <div class="navbar-header">
+                                    <a class="navbar-brand" href="/" rel="home">
+                                        <span class="navbar-brand-inner">
+                                            <img class="logo-dark" src="~/"
+                                                 alt="OOM Logo">
+                                            <img class="logo-sticky" src="~/"
+                                                 alt="OOM Logo">
+                                            <img class="mobile-logo-default" src="~/"
+                                                 alt="OOM Logo">
+                                            <img class="logo-default" width="120px" height="40px"
+                                                 src="~/" alt="OOM Logo">
+                                        </span>
+                                    </a>
+                                    <button type="button" class="navbar-toggle collapsed nav-trigger style-mobile"
+                                            data-toggle="collapse" data-target="#main-header-collapse" aria-expanded="false"
+                                            data-changeclassnames='{ "html": "mobile-nav-activated overflow-hidden" }'>
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="bars">
+                                            <span class="bar"></span>
+                                            <span class="bar"></span>
+                                            <span class="bar"></span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="collapse navbar-collapse" id="main-header-collapse">
+                                    <ul id="primary-nav"
+                                        class="main-nav nav align-items-lg-stretch justify-content-lg-start"
+                                        data-submenu-options='{ "toggleType":"fade", "handler":"mouse-in-out" }'
+                                        data-localscroll="true">
+                                        <li>
+                                            <a href="#home">
+                                                <span class="link-icon"></span>
+                                                <span class="link-txt">
+                                                    <span class="link-ext"></span>
+                                                    <span class="txt">
+                                                        الرئيسية
+                                                        <span class="submenu-expander">
+                                                            <i class="fa fa-angle-down"></i>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#services">
+                                                <span class="link-icon"></span>
+                                                <span class="link-txt">
+                                                    <span class="link-ext"></span>
+                                                    <span class="txt">
+                                                        الخدمات
+                                                        <span class="submenu-expander">
+                                                            <i class="fa fa-angle-down"></i>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#meeting">
+                                                <span class="link-icon"></span>
+                                                <span class="link-txt">
+                                                    <span class="link-ext"></span>
+                                                    <span class="txt">
+                                                        إنشاء لقاء
+                                                        <span class="submenu-expander">
+                                                            <i class="fa fa-angle-down"></i>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#about">
+                                                <span class="link-icon"></span>
+                                                <span class="link-txt">
+                                                    <span class="link-ext"></span>
+                                                    <span class="txt">
+                                                        من نحن
+                                                        <span class="submenu-expander">
+                                                            <i class="fa fa-angle-down"></i>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#callus">
+                                                <span class="link-icon"></span>
+                                                <span class="link-txt">
+                                                    <span class="link-ext"></span>
+                                                    <span class="txt">
+                                                        اتصل بنا
+                                                        <span class="submenu-expander">
+                                                            <i class="fa fa-angle-down"></i>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <li>
+                                                @if (ViewBag.UserType == "Participant")
+                                                {
+                                                    <a href="~/CPanel/Group/IndexStudent">
+                                                        <span class="link-icon"></span>
+                                                        <span class="link-txt">
+                                                            <span class="link-ext"></span>
+                                                            <span class="txt">
+                                                                حسابي
+                                                                <span class="submenu-expander">
+                                                                    <i class="fa fa-angle-down"></i>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                }
+                                                else if (ViewBag.UserType == "Supervisor")
+                                                {
+                                                    <a href="~/CPanel/Dashboard/CompetitionDashboard">
+                                                        <span class="link-icon"></span>
+                                                        <span class="link-txt">
+                                                            <span class="link-ext"></span>
+                                                            <span class="txt">
+                                                                حسابي
+                                                                <span class="submenu-expander">
+                                                                    <i class="fa fa-angle-down"></i>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                }
+                                                else if (ViewBag.UserType == "SystemAdmin")
+                                                {
+                                                    <a href="~/CPanel/Dashboard/UserDashboard">
+                                                        <span class="link-icon"></span>
+                                                        <span class="link-txt">
+                                                            <span class="link-ext"></span>
+                                                            <span class="txt">
+                                                                حسابي
+                                                                <span class="submenu-expander">
+                                                                    <i class="fa fa-angle-down"></i>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                }
+                                                else if (ViewBag.UserType == "SystemEmployee")
+                                                {
+                                                    <a href="~/CPanel/Dashboard/OrganizationDashboard">
+                                                        <span class="link-icon"></span>
+                                                        <span class="link-txt">
+                                                            <span class="link-ext"></span>
+                                                            <span class="txt">
+                                                                حسابي
+                                                                <span class="submenu-expander">
+                                                                    <i class="fa fa-angle-down"></i>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                }
+                                                else if (ViewBag.UserType == "OrganisationAdmin")
+                                                {
+                                                    <a href="~/CPanel/Dashboard/OrganizationDashboard">
+                                                        <span class="link-icon"></span>
+                                                        <span class="link-txt">
+                                                            <span class="link-ext"></span>
+                                                            <span class="txt">
+                                                                حسابي
+                                                                <span class="submenu-expander">
+                                                                    <i class="fa fa-angle-down"></i>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                }
+                                                else if (ViewBag.UserType == "OrganisationEmployee")
+                                                {
+                                                    <a href="~/CPanel/Dashboard/CompetitionDashboard">
+                                                        <span class="link-icon"></span>
+                                                        <span class="link-txt">
+                                                            <span class="link-ext"></span>
+                                                            <span class="txt">
+                                                                حسابي
+                                                                <span class="submenu-expander">
+                                                                    <i class="fa fa-angle-down"></i>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                }
+                                                else if (ViewBag.UserType == "Individual")
+                                                {
+                                                    <a href="~/CPanel/Dashboard/IndividualDashboard">
+                                                        <span class="link-icon"></span>
+                                                        <span class="link-txt">
+                                                            <span class="link-ext"></span>
+                                                            <span class="txt">
+                                                                حسابي
+                                                                <span class="submenu-expander">
+                                                                    <i class="fa fa-angle-down"></i>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="~/CPanel/Group/Index">
+                                                        <span class="link-icon"></span>
+                                                        <span class="link-txt">
+                                                            <span class="link-ext"></span>
+                                                            <span class="txt">
+                                                                حسابي
+                                                                <span class="submenu-expander">
+                                                                    <i class="fa fa-angle-down"></i>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                }
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                <a href="~/Identity/Account/Login">
+                                                    <span class="link-icon"></span>
+                                                    <span class="link-txt">
+                                                        <span class="link-ext"></span>
+                                                        <span class="txt">
+                                                            سجل دخول
+                                                            <span class="submenu-expander">
+                                                                <i class="fa fa-angle-down"></i>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        }
+
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col text-right">
+                                <div class="header-module">
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <a href="~/Identity/Account/Manage/Index">
+                                            <span class="link-txt">
+                                                <span class="txt">
+                                                    أهلا بعودتك : <b style="color:rgba(252, 81, 34, 0.85)">@User.Identity.Name</b>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+
+                            @*@if (User.Identity.IsAuthenticated)
+                                {
+                                    <div class="col text-right">
+                                        <div class="header-module">
+                                            <a href="~/CPanel/Dashboard/UserDashboard"
+                                               class="btn btn-default text-uppercase btn-sm circle btn-bordered border-thin px-2">
+                                                <span>
+                                                    <span class="btn-txt">حسابي</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col text-right">
+                                        <div class="header-module">
+                                            <a href="~/Identity/Account/Login"
+                                               class="btn btn-default text-uppercase btn-sm circle btn-bordered border-thin px-2">
+                                                <span>
+                                                    <span class="btn-txt">سجل دخول</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                }*@
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+        </header>
+        <main id="content" class="content">
             @RenderBody()
         </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - UnitLearn.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+        <footer id="callus" class="main-footer pt-60 pb-70">
+            <section class="vc_row">
+                <div class="container">
+                    <div class="row d-md-flex flex-wrap align-items-center">
+                        <div class="lqd-column col-md-6 col-sm-12 mb-100">
+                            <h3 class="widget-title">الشريط العلوي</h3>
+                            <ul class="lqd-custom-menu reset-ul font-size-16 lh-2">
+                                <li><a href="#home">الرئيسية</a></li>
+                                <li><a href="#services">الخدمات</a></li>
+                                <li><a href="#meeting">إنشاء لقاء</a></li>
+                                <li><a href="#about">من نحن</a></li>
+                                <li><a href="#callus">اتصل بنا</a></li>
+                                <li><a href="/Home/Privacy">سياسة الخصوصية</a></li>
+                                <li><a href="/Home/Terms">الأحكام والشروط</a></li>
+                                <li><a href="/Home/Support">الدعم الفني</a></li>
+                            </ul>
+                        </div>
+                        <div class="lqd-column col-md-6 col-xs-12 mb-0">
+                            <h3 class="widget-title">تواصل معنا</h3>
+                            <form action="" id="contactform" method="post" role="form">
+                                <div class="form-group">
+                                    <input class="form-control" name="Name" placeholder="اسمك" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="Email" required placeholder="بريدك الالكتروني" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="Subject" placeholder="عنوان الرسالة" />
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="Body" required rows="5" placeholder="محتوى الرسالة"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="error-message text-danger bg-warning p-1">عذرا لقد حدث خطأ ما</div>
+                                    <div class="sent-message text-success bg-success p-1">تم ارسال رسالتك بنجاح . شكرا لك</div>
+                                </div>
+                                <div class="form-group">
+                                    <button id="contactUsSubmit" type="submit" class="btn btn-solid text-uppercase btn-sm circle btn-bordered border-thin btn-gradient font-weight-bold px-0"
+                                            data-localscroll="true" data-localscroll-options='{"scrollBelowSection":true}'>
+                                        <span>
+                                            <span class="btn-gradient-bg"></span>
+                                            <span class="btn-txt">ارسال</span>
+                                            <span class="btn-gradient-bg btn-gradient-bg-hover"></span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                 xml:space="preserve" class="btn-gradient-border" width="100%" height="100%">
+                                            <defs>
+                                            <linearGradient id="svg-border-3" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%"></stop>
+                                            <stop offset="100%"></stop></linearGradient></defs>
+                                            <rect x="0.5" y="0.5" rx="29.5" ry="29.5" width="100%" height="100%"
+                                                  stroke="url(#svg-border-3)"></rect></svg>
+                                        </span>
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="vc_row pt-60">
+                <div class="container">
+                    <div class="row d-flex flex-wrap align-items-center">
+                        <div class="lqd-column col-md-6 d-flex flex-wrap align-items-center">
+                            <figure class="mr-3" style="padding-left: 10px;">
+                                <img src="~/" width="120px" height="30px" alt="OOM Logo">
+                            </figure>
+                            <p class="font-size-16 my-0">
+                                حقوق الطبع 2020  كل الحقوق محفوظة <span class="text-secondary font-weight-bold">.OOM.</span>
+                            </p>
+                        </div>
+                        <div class="lqd-column col-md-6 text-md-left">
+                            <ul class="social-icon social-icon-md mb-25">
+                                <li><a href=".General.FacebookLink" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href=".General.TwitterLink" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href=".General.InstagramLink" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+    </div>
+    <script src="~/HomeTemplate/assets/vendors/jquery.min.js"></script>
+    <script src="~/HomeTemplate/assets/js/theme-vendors.js"></script>
+    <script src="~/HomeTemplate/assets/js/theme.min.js"></script>
+    <script src="~/HomeTemplate/assets/js/liquidAjaxMailchimp.min.js"></script>
+
+    <script async src="~/HomeTemplate/assets/vendors/modernizr.min.js"></script>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+    @RenderSection("Scripts", false)
+
+    <script>
+        $('.error-message').hide();
+        $('.sent-message').hide();
+        $(document).on("click", "#contactUsSubmit", function (e) {
+            e.preventDefault();
+            var form = jQuery('#contactform')[0];
+            var data = new FormData(form);
+            jQuery.ajax({
+                type: 'POST',
+                url: '/Home/Contactus',
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response == "success") {
+                        $('.sent-message').show();
+                        $('.error-message').hide();
+                    }
+                    else {
+                        $('.error-message').show();
+                        $('.sent-message').hide();
+                    }
+                },
+                error: function (jqXHR, error, errorThrown) {
+                    $('.error-message').show();
+                    $('.sent-message').hide();
+                }
+            });
+        });
+
+    </script>
 </body>
+
 </html>
+
