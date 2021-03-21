@@ -108,19 +108,7 @@ namespace UnitLearn.Web
             services.AddTransient<CustomEmailConfirmationTokenProvider<ApplicationUser>>();
             //End => SendMail - ConfigureServices
 
-            //services.AddTransient<IRoleService, RoleService>();
-            //services.AddTransient<IDashboardService, DashboardService>();
-            //services.AddTransient<IZoom, Zoom>();
-            //services.AddTransient<IHttpRequestService, HttpRequestService>();
-            //services.AddTransient<IDriveService, DriveService>();
-            //services.AddTransient<INotificationService, NotificationService>();
-            //services.AddTransient<ILinkService, LinkService>();
-            //Start => Language - ConfigureServices
-
-            //services.Configure<ZoomOptions>(Configuration.GetSection("Zoom"));
-            //services.Configure<FcmSettings>(Configuration.GetSection("FCM"));
-
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
             services.AddRazorPages();
         }
 
@@ -136,21 +124,14 @@ namespace UnitLearn.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-            //Seed Data Initialize DataBase
-            //-- DBInitialize.Initialize(app);
-            //  app.UseHangfireDashboard();
-
-            // RecurringJob.AddOrUpdate<IZoom>(
-            //     x => x.RefreshingToken(),
-            //     Cron.Minutely);
-
             app.UseDeveloperExceptionPage();
+            app.UseDatabaseErrorPage();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -160,6 +141,12 @@ namespace UnitLearn.Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapAreaControllerRoute(
+                 name: "areas",
+                 areaName: "Panel",
+                 pattern: "{area:Panel}/{controller=exists}/{action=exists}/{id?}");
+
                 endpoints.MapRazorPages();
             });
             //RotativaConfiguration.Setup(env2);

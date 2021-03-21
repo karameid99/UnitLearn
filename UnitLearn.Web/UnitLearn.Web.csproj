@@ -6,6 +6,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Panel\Data\**" />
+    <Compile Remove="Areas\Panel\Models\**" />
+    <Compile Remove="Pages\**" />
+    <Content Remove="Areas\Panel\Data\**" />
+    <Content Remove="Areas\Panel\Models\**" />
+    <Content Remove="Pages\**" />
+    <EmbeddedResource Remove="Areas\Panel\Data\**" />
+    <EmbeddedResource Remove="Areas\Panel\Models\**" />
+    <EmbeddedResource Remove="Pages\**" />
+    <None Remove="Areas\Panel\Data\**" />
+    <None Remove="Areas\Panel\Models\**" />
+    <None Remove="Pages\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Panel\Views\Shared\Error.cshtml" />
+    <None Include="Areas\Panel\Views\Shared\_Layout.cshtml" />
+    <None Include="Areas\Panel\Views\Shared\_LoginPartial.cshtml" />
+    <None Include="Areas\Panel\Views\Shared\_ValidationScriptsPartial.cshtml" />
     <None Include="wwwroot\js\site.js" />
   </ItemGroup>
 
@@ -16,13 +35,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Panel\Controllers\" />
-    <Folder Include="Areas\Panel\Data\" />
-    <Folder Include="Areas\Panel\Models\" />
-    <Folder Include="Areas\Panel\Views\" />
   </ItemGroup>
 
 </Project>
