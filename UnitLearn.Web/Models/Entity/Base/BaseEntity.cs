@@ -20,9 +20,8 @@ namespace UnitLearn.Web.Models.Entity.Base
         [ScaffoldColumn(false)]
         public bool IsDelete { get; set; }
 
-        [ScaffoldColumn(false)]
         public string CreatedBy { get; set; }
-        [ForeignKey("CreatedBy")]
+        [ForeignKey(nameof(CreatedBy))]
         public ApplicationUser CreatedUser { get; set; }
 
         [ScaffoldColumn(false)]

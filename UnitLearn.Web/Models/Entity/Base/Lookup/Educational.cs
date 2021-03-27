@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using UnitLearn.Web.Models.Entity.Auth;
 
 namespace UnitLearn.Web.Models.Entity.Base.Lookup
 {
@@ -13,5 +14,6 @@ namespace UnitLearn.Web.Models.Entity.Base.Lookup
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string Name { get; set; }
+        public List<ApplicationUser> Users { get; set; }
     }
 }

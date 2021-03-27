@@ -36,6 +36,14 @@ namespace UnitLearn.Web.Data
             modelBuilder.Entity<Competition>()
                 .Property(b => b.TotalMark)
                 .HasDefaultValue(0);
+            modelBuilder.Entity<ApplicationUser>()
+                .HasOne(x => x.Specialization)
+                .WithMany(x => x.Users)
+                .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<ApplicationUser>()
+               .HasOne(x => x.Educational)
+               .WithMany(x => x.Users)
+               .OnDelete(DeleteBehavior.Restrict);
         }
 
         #region Assigmnet
