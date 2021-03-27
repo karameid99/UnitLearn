@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UnitLearn.Web.Data;
 using UnitLearn.Web.Models.Entity.Auth;
 
 namespace UnitLearn.Web.Areas.Panel.Controllers
@@ -18,14 +19,16 @@ namespace UnitLearn.Web.Areas.Panel.Controllers
     {
         protected readonly UserManager<ApplicationUser> _userManager;
         protected readonly RoleManager<IdentityRole> _roleManager;
+        protected readonly ApplicationDbContext _dbContext;
         protected String UserId;
         protected String UserName;
         protected String UserType;
 
-        public BaseController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        public BaseController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, ApplicationDbContext dbContext)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _dbContext = dbContext;
         }
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)

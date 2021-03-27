@@ -1,0 +1,149 @@
+﻿@{
+    ViewData["Title"] = "انواع المحتوى المعرفي";
+}
+
+@section Css{
+    <style>
+        td {
+            padding: 8px 1px 8px 1px !important;
+            font-size: 14px !important;
+        }
+
+        th {
+            font-weight: bold;
+            font-size: medium;
+        }
+
+        td a {
+            margin-left: 5px !important;
+        }
+
+        .m-portlet__body {
+            padding-top: 0px !important;
+        }
+
+        .dt-buttons {
+            margin-top: 12px
+        }
+
+        div.m-input-icon.m-input-icon--left {
+            border: 1px solid #bebebe
+        }
+    </style>
+}
+
+<div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    <span style="color: #ebebeb"></span>فهرس انواع المحتوى المعرفي في النظام<small style="color : gray">عرض وتعديل بيانات الاصناف  </small>
+                </h3>
+            </div>
+        </div>
+        <div class="m-portlet__head-tools">
+            <ul class="m-portlet__nav">
+                <li class="m-portlet__nav-item">
+                    <a href="~/Panel/KnowledgeCategory/Create" title="اضافة صنف جديد" class="PopUp m-btn--sm btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">
+                        <span>
+                            <i class="fa fa-plus-square"></i>
+                            <span style="font-size:14px">اضافة</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <div class="table-responsive">
+            <table class="table m-table table-bordered table-striped m-table--head-separator-success" id="dataTableId" style="margin-top:30px!important">
+                <thead align="center">
+                    <tr>
+                        <th>الصنف</th>
+                        <th>الاصناف الداخلية</th>
+                        <th width="20%">العمليات</th>
+                    </tr>
+                </thead>
+                <tbody align="center"></tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            $(".DTForm").submit(function () {
+                BindDataTable();
+                return false;
+            });
+            BindDataTable();
+        });
+
+        $(document).on("click", ".SearchBtn", function () {
+            BindDataTable();
+        });
+
+        BindDataTable();
+
+        function BindDataTable() {
+            oTable = $('#dataTableId').dataTable(
+                {
+                    language: {
+                        aria: {
+                            sortAscending: ": فعال لترتيب العمود تصاعديا", sortDescending: ": فعال لترتيب العمود تنازليا"
+                        }
+                        , emptyTable: "لا يوجد بيانات لعرضها", info: "عرض _START_ الى _END_ من _TOTAL_ صف", infoEmpty: "لا يوجد نتائج لعرضها", infoFiltered: "(filtered1 من _MAX_ اجمالي صفوف)", lengthMenu: "_MENU_", search: "بحث", zeroRecords: "لا يوجد نتائج لعرضها",
+                        paginate: { sFirst: "الاول", sLast: "الاخير", sNext: "التالي", sPrevious: "السابق" }
+                    },
+
+                    "dom":
+                        "<'row'<'col-sm-12'tr>>" +
+                        "<'row'<'col-sm-4'i><'col-sm-4 text-center'l><'col-sm-4'p>>",
+                    "iDisplayLength": 8,
+                    "sPaginationType": "full_numbers",
+                    "bFilter": false,
+                    "bDestroy": true,
+                    "bSort": false,
+                    "bStateSave": true,
+                    "bLengthChange": true,
+                    "columnDefs": [{
+                        "orderable": false
+                    }],
+                    //"bSort": false,
+                    serverSide: true,
+                    columns: [
+                        {
+                            data: 'name', "render": function (data, type, row) {
+                                return "<a href='/Panel/SubKnowledgeCategory/Index/" + row["id"] + "'><b>" + row["name"] + "</b></a>";
+                            }
+                        },
+                        {
+                            data: 'total', "render": function (data, type, row) {
+                                return "<b>" + row["total"] + "</b>";
+                            }
+                        },
+                        {
+                            name: 'buttons', "render": function (data, type, row) {
+                                return ""
+                                    + "<a title='تعديل الصنف' href='/Panel/KnowledgeCategory/Edit/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-edit'></i></a>"
+                                    + "<a title='حذف الصنف' tname='#dataTableId' href='/Panel/KnowledgeCategory/Delete/" + row["id"] + "' class='Confirm  btn btn-outline-danger btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='flaticon-delete-1'></i></a>"
+                            }
+                        }
+                    ],
+                    ajax: {
+                        type: "POST",
+                        contentType: "application/json",
+                        url: '/Panel/KnowledgeCategory/AjaxData',
+                        data: function (d) {
+                            d.SearchKey = ($("[name=SearchKey]").val());
+                            return JSON.stringify(d);
+                        }
+                    }
+                });
+        }
+
+    </script>
+
+}
