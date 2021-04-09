@@ -1,0 +1,83 @@
+﻿@model UnitLearn.Web.Models.ViewModels.UserVm
+
+@{
+    ViewData["Title"] = "تعديل مستخدم ";
+    Layout = null;
+}
+
+<form asp-action="Edit" method="post" class="ajaxForm" tname="#dataTableId">
+    <input asp-for="Id" type="hidden" />
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="FullName"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="DateOfBirth"></label>
+                <input type="date" asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="SpecializationId"></label>
+                <select class="selectpicker" asp-for="SpecializationId" asp-items="ViewBag.CountryId">
+                    <option value="">--- اختر ---</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="EducationalId"></label>
+                <select class="selectpicker" asp-for="EducationalId" asp-items="ViewBag.GovernorateId">
+                    <option value="">--- اختر ---</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group m-form__group">
+                <label class="control-label" asp-for="UserTypeId"></label>
+                <select class="selectpicker" asp-for="UserTypeId" asp-items="ViewBag.AccountStatusId">
+                    <option value="">--- اختر ---</option>
+                </select>
+                <span asp-validation-for="UserTypeId" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="form-group">
+        <input type="submit" value="اضافة" class="btn btn-primary" />
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">الغاء</button>
+    </div>
+</form>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<script>
+    $('.selectpicker').selectpicker();
+    PageLoadActions();
+</script>

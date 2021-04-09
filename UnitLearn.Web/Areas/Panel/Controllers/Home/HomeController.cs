@@ -26,44 +26,7 @@ namespace UnitLearn.Web.Areas.Panel.Controllers.Home
             return View();
         }
 
-        [HttpPost]
-        public JsonResult AjaxData([FromBody] dynamic data)
-        {
-            DataTableHelper d = new DataTableHelper(data);
-
-            var query = new List<dynamic>();
-            for (int i = 0; i < 100; i++)
-            {
-                query.Add(new
-                {
-                    Id = i + 1,
-                    Name = RandomString(),
-                    createAt = DateTime.Now.AddDays(i).ToString("MM/dd/yyyy")
-                });
-            }
-
-            int totalCount = query.Count();
-
-            var items = query.Skip(d.Start).Take(d.Length).ToList();
-            var result =
-               new
-               {
-                   draw = d.Draw,
-                   recordsTotal = totalCount,
-                   recordsFiltered = totalCount,
-                   data = items
-               };
-            return Json(result);
-        }
-
-        private static Random random = new Random();
-
-        public static string RandomString()
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(chars, 10)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
-        }
+       
 
 
     }

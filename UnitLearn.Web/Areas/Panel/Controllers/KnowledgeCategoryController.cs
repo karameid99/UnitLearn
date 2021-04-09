@@ -29,22 +29,8 @@ namespace UnitLearn.Web.Areas.Panel.Controllers
         public JsonResult AjaxData([FromBody] dynamic data)
         {
             DataTableHelper d = new DataTableHelper(data);
-            //var query = _dbContext.KnowledgeCategory.ToList();
-
-            var query = new List<KnowledgeCategory>();
-
-            for (int i = 1; i < 100; i++)
-            {
-                query.Add(new KnowledgeCategory
-                {
-                    Id = i,
-                    Name = "KnowledgeCategory" + i,
-                });
-            }
-
-
+            var query = _dbContext.KnowledgeCategory.ToList();
             int totalCount = query.Count();
-
             var items = query.Select(x => new
             {
                 x.Id,
